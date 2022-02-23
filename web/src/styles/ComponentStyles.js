@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const FiltersWrapper = styled.div`
-display: flex;
-margin-bottom: 2rem;
+  display: flex;
+  margin-bottom: 2rem;
 
 @media (max-width: 756px) {
   flex-direction: column;
@@ -10,11 +10,11 @@ margin-bottom: 2rem;
 `;
 
 export const CurrencyFilters = styled.ul`
-list-style-type: none;
-display: flex;
-padding: 0;
-gap: 1rem;
-margin-left: auto;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  gap: 1rem;
+  margin-left: auto;
 
 @media (max-width: 756px) {
   margin-left: unset;
@@ -22,41 +22,41 @@ margin-left: auto;
 `;
 
 export const CurrencyButton = styled.button`
-border: none;
-font-family: var(--font-family);
-font-size: 20px;
-cursor: pointer;
-background-color: ${(p) =>
-  p.name === p.currencyFilter ? '#d1e7fb' : 'var(--color-white)'};
-color: ${(p) =>
-  p.name === p.currencyFilter ? 'var(--color-blue)' : 'inherit'};
-font-weight: ${(p) => (p.name === p.currencyFilter ? '700' : '400')};
-border-radius: 8px;
-padding: 6px 12px;
-/* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-  rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+  border: none;
+  font-family: var(--font-family);
+  font-size: 20px;
+  cursor: pointer;
+  background-color: ${(p) =>
+    p.name === p.currencyFilter ? '#d1e7fb' : 'var(--color-white)'};
+  color: ${(p) =>
+    p.name === p.currencyFilter ? 'var(--color-blue)' : 'inherit'};
+  font-weight: ${(p) => (p.name === p.currencyFilter ? '700' : '400')};
+  border-radius: 8px;
+  padding: 6px 12px;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
 `;
 
 export const Orderings = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 
-select {
-  appearance: none;
-  border: none;
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
+  select {
+    appearance: none;
+    border: none;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
 
-  padding: 10px;
-  font-family: var(--font-family);
-  font-size: 18px;
-  border-radius: 8px;
-  border: 1px solid darkgray;
-  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+    padding: 10px;
+    font-family: var(--font-family);
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid darkgray;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
 }
 `;
 
