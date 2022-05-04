@@ -104,7 +104,7 @@ You should also install and use [the Django REST framework][drf-doc] since you a
 
 You should be ready to start working on the challenge now.
 
-### Both: Run the JS/React Web Client
+### Run the JS/React Web Client
 
 This project is best run using **Node 14.17.x**.
 
