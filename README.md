@@ -78,7 +78,6 @@ If there are any pre-existing patterns in the code that you don't like, feel fre
 
 ### Not required, but nice to have
 
-- Use a web framework (eg. Django)
 - Persist data in an SQL based database
 
 ## Getting Started
