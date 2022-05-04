@@ -83,6 +83,28 @@ If there are any pre-existing patterns in the code that you don't like, feel fre
 
 ## Getting Started
 
+### Initialize the backend project
+
+We have summarized the steps for you but you should follow [the official documentation][django-doc] that well describes
+how to start working with Django.
+
+- [Install the latest Python version][install-python]
+- [Install Django][install-django]
+
+  `$ python -m pip install Django`
+
+- [Create a Django project][create-project]
+
+  `$ django-admin startproject spendingexercise`
+
+- [Start the application](start-application) and verify that it works
+
+  `$ python manage.py runserver`
+
+You should also install and use [the Django REST framework][drf-doc] since you are going to develop a RESTful API.
+
+You should be ready to start working on the challenge now.
+
 ### Both: Run the JS/React Web Client
 
 This project is best run using **Node 14.17.x**.
@@ -104,3 +126,10 @@ Run the client (http://localhost:3000):
 ```shell
 cd web && npm start
 ```
+
+[django-doc]: https://docs.djangoproject.com/en/4.0/
+[install-python]: https://docs.djangoproject.com/en/4.0/intro/install/#install-python
+[install-django]: https://docs.djangoproject.com/en/4.0/topics/install/#installing-an-official-release-with-pip
+[create-project]: https://docs.djangoproject.com/en/4.0/intro/tutorial01/#creating-a-project
+[start-application]: https://docs.djangoproject.com/en/4.0/intro/tutorial01/#the-development-server
+[drf-doc]: https://www.django-rest-framework.org/
