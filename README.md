@@ -83,48 +83,6 @@ If there are any pre-existing patterns in the code that you don't like, feel fre
 
 ## Getting Started
 
-### Option #1: Run the Python/Flask API
-
-This project is best run using **Python 3.7.9**.
-
-Install python dependencies:
-
-```shell
-cd python && pip install -r requirements.txt
-```
-
-Run the python tests:
-
-```shell
-cd python && pytest tests.py
-```
-
-Run the API (http://localhost:5000):
-
-```shell
-cd python && FLASK_APP=app python -m flask run
-```
-
-### Option #2: Run the Node/Express API
-
-This project is best run using **Node 14.17.x**.
-
-```shell
-cd node && npm i
-```
-
-Run the node tests:
-
-```shell
-cd node && npm test
-```
-
-Run the API (http://localhost:5000):
-
-```shell
-cd node && npm start
-```
-
 ### Both: Run the JS/React Web Client
 
 This project is best run using **Node 14.17.x**.
