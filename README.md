@@ -36,10 +36,10 @@ A spending JSON object looks something like this:
 ### Technical requirements
 
 - Use Git and share the project on GitHub
-- The backend solution can be written in any programming language
-  - We have created a scaffolded Python/Flask and a Node.js/Express version
-  - But you can start from scratch in any language
-- No need for any SQL database to store data, you can store the data in memory
+- The backend solution must be written in Django
+  - We have written a brief description about how to start a project
+  - But you can start however you like (e.g. using Docker or virtual environments)
+- You can use the included database called SQLite so you don't need to set up a database
 
 ### Acceptance criteria
 
