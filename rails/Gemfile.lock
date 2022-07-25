@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: efc6a90d845a25a34ddbcc9280ed951ecd346163
+  branch: master
+  specs:
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,6 +76,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
@@ -131,11 +142,15 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
+      racc (~> 1.4)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (7.0.3.1)
@@ -213,15 +228,19 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
+  annotate (~> 3.2)
   bootsnap
   capybara
   debug
+  faker!
   importmap-rails
   jbuilder
   mysql2
   puma (~> 5.0)
+  rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
   redis (~> 4.0)
   selenium-webdriver

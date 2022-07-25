@@ -1,16 +1,30 @@
-rails:
-  image: spending:latest
-  ports:
-    - "5000:5000"
-  links:
-    - db
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_ADDRESS: db
-    RAILS_ENV: development
-db:
-  image: library/mysql:5.6.22
-  ports:
-    - "13306:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: root
+version: '3.4'
+
+services:
+  app:
+    build: .
+    command: bundle exec rails s -p 5000 -b '0.0.0.0'
+    volumes:
+      - ".:/app"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DB_USER: root
+      DB_NAME: spending
+      DB_PASSWORD: password
+      DB_HOST: db
+    entrypoint: ["bash", "entrypoint.bash"]
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: spending
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"

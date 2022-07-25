@@ -10,9 +10,11 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-*
+rails/db/schema.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*
+rails/log/development.log
 rails/tmp/*
 !/log/.keep
 !/tmp/.keep

@@ -17,6 +17,8 @@ export default function SpendingList({ spendings, setSpendings }) {
 
   useEffect(() => {
     setLoading(true);
+    // let params = new URLSearchParams(state.filter_params).toString();
+    // fetch(`http://localhost:5000/spendings?${params}`, {
     fetch(`http://localhost:5000/spendings`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -75,8 +77,8 @@ export default function SpendingList({ spendings, setSpendings }) {
               </p>
             </TextWrapper>
             <AmountWrapper>
-              <Amount currency={spending.currency}>
-                {(spending.amount / 100).toFixed(2)}
+              <Amount currency={spending.currency.name}>
+                {parseFloat(spending.amount).toFixed(spending.currency.scale)}
               </Amount>
             </AmountWrapper>
           </Spending>
