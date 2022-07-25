@@ -1,0 +1,16 @@
+rails:
+  image: spending:latest
+  ports:
+    - "5000:5000"
+  links:
+    - db
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_ADDRESS: db
+    RAILS_ENV: development
+db:
+  image: library/mysql:5.6.22
+  ports:
+    - "13306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
