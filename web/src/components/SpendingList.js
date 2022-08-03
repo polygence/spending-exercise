@@ -11,13 +11,14 @@ import {
   AmountWrapper,
 } from "../styles/ComponentStyles";
 
-export default function SpendingList({ spendings, setSpendings }) {
+export default function SpendingList({ spendings, setSpendings, filterParams }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/spendings`, {
+    let params = new URLSearchParams(filterParams).toString();
+    fetch(`http://localhost:5000/spendings?${params}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -75,8 +76,8 @@ export default function SpendingList({ spendings, setSpendings }) {
               </p>
             </TextWrapper>
             <AmountWrapper>
-              <Amount currency={spending.currency}>
-                {(spending.amount / 100).toFixed(2)}
+              <Amount currency={spending.currency.name}>
+                {parseFloat(spending.amount).toFixed(spending.currency.scale)}
               </Amount>
             </AmountWrapper>
           </Spending>
