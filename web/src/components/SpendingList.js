@@ -41,7 +41,7 @@ export default function SpendingList({ spendings, setSpendings, filterParams }) 
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [filterParams]);
 
   if (loading) return <Loader />;
 
