@@ -77,7 +77,7 @@ export default function SpendingList({ spendings, setSpendings, filterParams }) 
             </TextWrapper>
             <AmountWrapper>
               <Amount currency={spending.currency.name}>
-                {parseFloat(spending.amount).toFixed(spending.currency.scale)}
+                {parseFloat(spending.amount_cents / 100).toFixed(spending.currency.scale)}
               </Amount>
             </AmountWrapper>
           </Spending>
