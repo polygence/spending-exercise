@@ -2,7 +2,7 @@ class SpendingsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: Spending.filter_by(filter_params).map(&:serialized_data)
+    render json: Spending.filter_by(filter_params).map(&:serialized_data), code: 200, status: :ok
   end
 
   def create
@@ -15,6 +15,15 @@ class SpendingsController < ApplicationController
   rescue StandardError => error
     Rails.logger.debug(error.message)
     render json: { messages: ["Something went wrong."] }, code: 500, status: :internal_server_error
+  end
+
+  def destroy
+    spending = Spending.find(params[:id])
+    spending.destroy
+    render json: { message: "#{spending.description} is successfully deleted." }, code: 200, status: :ok
+  rescue ActiveRecord::RecordNotFound => error
+    Rails.logger.debug(error.message)
+    render json: { messages: ["Couldn't find spending with id: #{params[:id]}"] }, code: 500, status: :internal_server_error
   end
 
   private

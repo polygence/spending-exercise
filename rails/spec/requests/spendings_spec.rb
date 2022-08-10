@@ -97,4 +97,27 @@ RSpec.describe "Spendings", type: :request do
       end
     end
   end
+
+  describe "DELETE /spendings" do
+    let!(:spending) { create(:huf_spending) }
+
+    before do
+      delete "/spendings/#{spending.id}"
+    end
+
+    it "returns with 200 HTTP code" do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "returns with a message about the deletation" do
+      message = JSON.parse(response.body)["message"]
+      expect(message).to eq("#{spending.description} is successfully deleted.")
+    end
+
+    it "returns with an error message" do
+      delete "/spendings/9999999"
+      error_messages = JSON.parse(response.body)["messages"]
+      expect(error_messages).to eq(["Couldn't find spending with id: 9999999"])
+    end
+  end
 end
