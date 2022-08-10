@@ -18,7 +18,10 @@ export default function App() {
   return (
     <>
       <Layout>
-        <Form />
+        <Form
+          spendings={spendings}
+          setSpendings={setSpendings}
+        />
         <FiltersAndOrderings
           onFilterParamsChanged={filterParamsHandler}
           filterParams={filterParams}

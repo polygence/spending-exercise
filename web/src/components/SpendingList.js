@@ -62,26 +62,26 @@ export default function SpendingList({ spendings, setSpendings, filterParams }) 
         </h1>
       )}
       {spendings.length > 0 &&
-        spendings.map((spending) => (
-          <Spending key={spending.id}>
-            <IconWrapper>
-              <FiDollarSign color="var(--color-blue)" />
-            </IconWrapper>
-            <TextWrapper>
-              <h3>{spending.description}</h3>
-              <p>
-                {DateTime.fromISO(spending.spent_at).toFormat(
-                  "t - MMMM dd, yyyy"
-                )}
-              </p>
-            </TextWrapper>
-            <AmountWrapper>
-              <Amount currency={spending.currency.name}>
-                {parseFloat(spending.amount_cents / 100).toFixed(spending.currency.scale)}
-              </Amount>
-            </AmountWrapper>
-          </Spending>
-        ))}
+      spendings.map((spending) => (
+        <Spending key={spending.id}>
+          <IconWrapper>
+            <FiDollarSign color="var(--color-blue)"/>
+          </IconWrapper>
+          <TextWrapper>
+            <h3>{spending.description}</h3>
+            <p>
+              {DateTime.fromISO(spending.spent_at).toFormat(
+                "t - MMMM dd, yyyy"
+              )}
+            </p>
+          </TextWrapper>
+          <AmountWrapper>
+            <Amount currency={spending.currency.name}>
+              {parseFloat(spending.amount_cents).toFixed(spending.currency.scale)}
+            </Amount>
+          </AmountWrapper>
+        </Spending>
+      ))}
     </>
   );
 }
