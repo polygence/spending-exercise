@@ -83,49 +83,50 @@ If there are any pre-existing patterns in the code that you don't like, feel fre
 
 ## Getting Started
 
-### Option #1: Run the Python/Flask API
+### Install Docker
 
-This project is best run using **Python 3.7.9**.
+Visit this [page](https://docs.docker.com/get-docker/) and follow the instructions.
 
-Install python dependencies:
+This project is running on Ruby on Rails 7 with MySQL 5.7.
 
-```shell
-cd python && pip install -r requirements.txt
-```
-
-Run the python tests:
+Run the Ruby on Rails application:
 
 ```shell
-cd python && pytest tests.py
+cd rails && docker-compose up --build -d
 ```
 
-Run the API (http://localhost:5000):
+Stop the Ruby on Rails application:
 
 ```shell
-cd python && FLASK_APP=app python -m flask run
+cd rails && docker-compose down
 ```
 
-### Option #2: Run the Node/Express API
-
-This project is best run using **Node 14.17.x**.
+Check the containers` status:
 
 ```shell
-cd node && npm i
+docker ps
 ```
 
-Run the node tests:
+You should see something like this:
+
+|CONTAINER ID|IMAGE|COMMAND|CREATED|STATUS|PORTS|NAMES|
+|---|---|---|---|---|---|---|
+|d53626fafa9b|rails_app|"bash entrypoint.bas…"|11 seconds ago|Up 9 seconds|0.0.0.0:5000->5000/tcp|rails-app-1
+|66b3f1272c01|mysql:5.7|"docker-entrypoint.s…"|11 seconds ago|Up 10 seconds|33060/tcp, 0.0.0.0:3307->3306/tcp|rails-db-1
+
+Prepare database(you need to run this only once):
 
 ```shell
-cd node && npm test
+cd rails && docker-compose run app rails db:create db:migrate db:seed
 ```
 
-Run the API (http://localhost:5000):
+Run tests:
 
 ```shell
-cd node && npm start
+cd rails && docker-compose run app bundle exec rspec
 ```
 
-### Both: Run the JS/React Web Client
+### Run the JS/React Web Client
 
 This project is best run using **Node 14.17.x**.
 
