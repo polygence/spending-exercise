@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FiDollarSign } from "react-icons/fi";
+import {FiDollarSign, FiTrash2} from "react-icons/fi";
 import { DateTime } from "luxon";
 import Loader from "./Loader";
 import {
   ErrorMessage,
   Spending,
   IconWrapper,
+  RedIconWrapper,
   TextWrapper,
   Amount,
   AmountWrapper,
@@ -43,6 +44,39 @@ export default function SpendingList({ spendings, setSpendings, filterParams }) 
       });
   }, [filterParams]);
 
+  const deleteHandler = spending => e => {
+    e.preventDefault();
+    if (window.confirm("Are you sure you want to delete " + spending.description + "?") == true) {
+      setLoading(true);
+      fetch(`http://localhost:5000/spendings/${spending.id}`, {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"},
+      })
+        .then(async (res) => {
+          const body = await res.json();
+          return {
+            status: res.status,
+            body,
+          };
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            let index = spendings.findIndex(function(sp) {
+              return sp.id == spending.id
+            });
+            spendings.splice(index, 1);
+            setSpendings(spendings);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }
+
   if (loading) return <Loader />;
 
   return (
@@ -77,9 +111,12 @@ export default function SpendingList({ spendings, setSpendings, filterParams }) 
           </TextWrapper>
           <AmountWrapper>
             <Amount currency={spending.currency.name}>
-              {parseFloat(spending.amount_cents).toFixed(spending.currency.scale)}
+              {(parseFloat(spending.amount_cents) / 100).toFixed(spending.currency.scale)}
             </Amount>
           </AmountWrapper>
+          <RedIconWrapper onClick={deleteHandler(spending)}>
+            <FiTrash2 color="var(--color-red)"/>
+          </RedIconWrapper>
         </Spending>
       ))}
     </>

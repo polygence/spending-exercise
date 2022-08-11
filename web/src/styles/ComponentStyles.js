@@ -200,6 +200,33 @@ export const IconWrapper = styled.div`
   }
 `;
 
+export const RedIconWrapper = styled.div`
+  padding: 8px;
+  line-height: 0;
+  background-color: #ff8080;
+  border-radius: 12px;
+  margin-left: 1.5rem;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media (max-width: 756px) {
+    margin: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #ff5050;
+  }
+`;
+
 export const TextWrapper = styled.div`
   @media (max-width: 756px) {
     text-align: center;

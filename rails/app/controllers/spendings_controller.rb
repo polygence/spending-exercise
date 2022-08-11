@@ -40,7 +40,7 @@ class SpendingsController < ApplicationController
     description, amount, currency = permitted_create_params.values_at(:description, :amount, :currency)
     {
       description: description,
-      amount:      Money.new(amount.to_f, currency),
+      amount:      Money.new(amount.to_f * 100, currency),
       currency:    Currency.find_by(name: currency)
     }
   end

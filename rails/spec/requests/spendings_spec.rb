@@ -20,7 +20,7 @@ RSpec.describe "Spendings", type: :request do
   describe "POST /spendings" do
     let!(:currency) { create(:usd_currency) }
     let(:description) { "Test spending" }
-    let(:amount) { "100.0" }
+    let(:amount) { 100.0 }
     let(:currency_name) { "USD" }
 
     before do
@@ -41,7 +41,7 @@ RSpec.describe "Spendings", type: :request do
       it "returns with the new spending as JSON" do
         resp = JSON.parse(response.body)
         expect(resp["description"]).to eq(description)
-        expect(resp["amount_cents"]).to eq(amount)
+        expect(resp["amount_cents"]).to eq((amount * 100).to_s)
         expect(resp["currency"]["name"]).to eq(currency_name)
       end
 

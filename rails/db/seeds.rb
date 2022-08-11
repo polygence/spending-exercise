@@ -7,4 +7,4 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Currency.seed_data!
-Spending.seed_data!
+# Spending.seed_data!
