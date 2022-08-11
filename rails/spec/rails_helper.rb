@@ -7,6 +7,7 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require "money-rails/test_helpers"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -60,7 +61,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -69,6 +70,8 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.formatter = :documentation
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!

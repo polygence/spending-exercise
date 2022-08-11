@@ -226,13 +226,39 @@ export const Amount = styled.h3`
   }
 `;
 
-export const ErrorMessage = styled.h1`
+export const Message = styled.h1`
   text-align: center;
   margin: 4rem auto;
   font-size: 20px;
-  background-color: #fb7c7d;
   color: var(--color-white);
   padding: 10px 15px;
   border-radius: 8px;
   max-width: 80%;
+`;
+
+export const ErrorMessage = styled(Message)`
+  background-color: #fb7c7d;
+`;
+
+export const SuccessMessage = styled(Message)`
+  @keyframes myAnimation{
+    0%{
+      opacity: 1;
+      transform: rotateX(90deg);
+    }
+    50%{
+      opacity: 0.5;
+      transform: rotateX(0deg);
+    }
+    100%{
+      display: none;
+      opacity: 0;
+      transform: rotateX(90deg);
+    }
+  }
+
+  background-color: #08b783;
+  animation-name: myAnimation;
+  animation-duration: 5000ms;
+  animation-fill-mode: forwards;
 `;

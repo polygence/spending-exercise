@@ -5,19 +5,26 @@ import SpendingList from './components/SpendingList';
 import Layout from './components/Layout';
 
 export default function App() {
-  const [spendings, setSpendings] = useState([]);
+  const [spendings, setSpendings]       = useState([]);
   const [filterParams, setFilterParams] = useState({
-    order: "-date",
-    currency: ""
+    order: '-date',
+    currency: ''
   });
+
+  const filterParamsHandler = (data) => {
+    setFilterParams({...filterParams, ...data});
+  };
 
   return (
     <>
       <Layout>
-        <Form />
+        <Form
+          spendings={spendings}
+          setSpendings={setSpendings}
+        />
         <FiltersAndOrderings
+          onFilterParamsChanged={filterParamsHandler}
           filterParams={filterParams}
-          setFilterParams={setFilterParams}
         />
         <SpendingList
           spendings={spendings}
